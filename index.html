@@ -1943,9 +1943,55 @@
 
         // ==================== 数据存储 ====================
         let appData = {
-            staff: [],
-            categories: [],
-            prices: [],
+            staff: [
+                { id: 1, name: '林清雅', title: '高级监督员', bio: '十年教育行业深耕，专注于学习方法与时间管理，帮助上千名学员提升学习效率，实现自我突破。', avatar: '' },
+                { id: 2, name: '陈墨言', title: '资深监督员', bio: '毕业于顶尖学府，精通各类考试技巧与备考策略，善于针对性制定学习计划，因材施教。', avatar: '' }
+            ],
+            categories: [
+                { id: 1, name: 'Boss监督', desc: '高端Boss级监督服务' },
+                { id: 2, name: '严厉监督', desc: '严格要求的监督服务' },
+                { id: 3, name: 'Boss与严厉双监督', desc: 'Boss与严厉双重监督' },
+                { id: 4, name: '2v2监督模式', desc: '两位监督员同时服务' },
+                { id: 5, name: '夜间监督模式', desc: '夜间专属监督服务' },
+                { id: 6, name: '其他监督模式', desc: '特色监督服务项目' }
+            ],
+            prices: [
+                // ========== Boss监督 ==========
+                { id: 1, categoryId: 1, name: '单人单项', desc: '项目包括：学习、减肥、生活（不良习好、三餐喝水、手机屏幕时长等选两项）', dayCount: 3, priceDay: 99, weekCount: 7, priceWeek: 198, monthCount: 30, priceMonth: 609, quarterCount: 90, priceQuarter: 1988, priceYear: 0, yearCount: 0 },
+                { id: 2, categoryId: 1, name: '单人双项', desc: '项目包括：学习、减肥、生活（任选两项监督）', dayCount: 3, priceDay: 146, weekCount: 7, priceWeek: 288, monthCount: 30, priceMonth: 1066, quarterCount: 90, priceQuarter: 2988, priceYear: 0, yearCount: 0 },
+                { id: 3, categoryId: 1, name: '单人主贝', desc: '项目包括：根据学员监督要求制定专属家规、优先回复、星标学员', dayCount: 3, priceDay: 188, weekCount: 7, priceWeek: 398, monthCount: 30, priceMonth: 1399, quarterCount: 90, priceQuarter: 4098, priceYear: 0, yearCount: 0 },
+                { id: 4, categoryId: 1, name: '双人单项', desc: '双人项目也包括同单人', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 278, monthCount: 30, priceMonth: 999, quarterCount: 90, priceQuarter: 2888, priceYear: 0, yearCount: 0 },
+                { id: 5, categoryId: 1, name: '双人双项', desc: '双人项目也包括同单人', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 428, monthCount: 30, priceMonth: 1688, quarterCount: 90, priceQuarter: 4888, priceYear: 0, yearCount: 0 },
+                { id: 6, categoryId: 1, name: '双人主贝', desc: '双人项目也包括同单人', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 588, monthCount: 30, priceMonth: 1988, quarterCount: 90, priceQuarter: 5888, priceYear: 0, yearCount: 0 },
+                
+                // ========== 严厉监督 ==========
+                { id: 7, categoryId: 2, name: '单人单项', desc: '项目包括：学习、减肥、生活（不良习好、三餐喝水、手机屏幕时长等选两项）', dayCount: 3, priceDay: 88, weekCount: 7, priceWeek: 165, monthCount: 30, priceMonth: 588, quarterCount: 90, priceQuarter: 1699, priceYear: 0, yearCount: 0 },
+                { id: 8, categoryId: 2, name: '单人双项', desc: '项目包括：学习、减肥、生活（任选两项监督）', dayCount: 3, priceDay: 132, weekCount: 7, priceWeek: 238, monthCount: 30, priceMonth: 899, quarterCount: 90, priceQuarter: 2588, priceYear: 0, yearCount: 0 },
+                { id: 9, categoryId: 2, name: '单人主贝', desc: '项目包括：根据学员监督要求制定专属家规、优先回复、星标学员', dayCount: 3, priceDay: 158, weekCount: 7, priceWeek: 298, monthCount: 30, priceMonth: 1088, quarterCount: 90, priceQuarter: 3088, priceYear: 0, yearCount: 0 },
+                { id: 10, categoryId: 2, name: '双人单项', desc: '双人项目也包括同单人', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 238, monthCount: 30, priceMonth: 889, quarterCount: 90, priceQuarter: 2588, priceYear: 0, yearCount: 0 },
+                { id: 11, categoryId: 2, name: '双人双项', desc: '双人项目也包括同单人', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 328, monthCount: 30, priceMonth: 1288, quarterCount: 90, priceQuarter: 3668, priceYear: 0, yearCount: 0 },
+                { id: 12, categoryId: 2, name: '双人主贝', desc: '双人项目也包括同单人', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 408, monthCount: 30, priceMonth: 1588, quarterCount: 90, priceQuarter: 4588, priceYear: 0, yearCount: 0 },
+
+                // ========== Boss与严厉双监督 ==========
+                { id: 13, categoryId: 3, name: '双人单项', desc: 'Boss与严厉双监督服务', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 258, monthCount: 30, priceMonth: 944, quarterCount: 90, priceQuarter: 2738, priceYear: 0, yearCount: 0 },
+                { id: 14, categoryId: 3, name: '双人双项', desc: 'Boss与严厉双监督服务', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 368, monthCount: 30, priceMonth: 1388, quarterCount: 90, priceQuarter: 3988, priceYear: 0, yearCount: 0 },
+                { id: 15, categoryId: 3, name: '双人主贝', desc: 'Boss与严厉双监督服务', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 528, monthCount: 30, priceMonth: 1868, quarterCount: 90, priceQuarter: 5388, priceYear: 0, yearCount: 0 },
+
+                // ========== 2v2监督模式 ==========
+                { id: 16, categoryId: 4, name: 'Boss单项', desc: '2v2监督模式', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 530, monthCount: 30, priceMonth: 1828, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                { id: 17, categoryId: 4, name: 'Boss双项', desc: '2v2监督模式', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 795, monthCount: 30, priceMonth: 2868, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+
+                // ========== 夜间监督模式 ==========
+                { id: 18, categoryId: 5, name: 'Boss单项', desc: '夜间监督服务', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 133, monthCount: 30, priceMonth: 532, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                { id: 19, categoryId: 5, name: '严厉单项', desc: '夜间监督服务', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 119, monthCount: 30, priceMonth: 476, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+
+                // ========== 其他监督模式 ==========
+                { id: 20, categoryId: 6, name: '抽背（语音/文字）', desc: '30元/25分钟 60元/1小时', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                { id: 21, categoryId: 6, name: '训诫（文字/视频）', desc: '文字：88元/30分钟 视频：128元/30分钟', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                { id: 22, categoryId: 6, name: '树洞（文字/视频）', desc: '文字：49元/30分钟 视频：69元/30分钟', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                { id: 23, categoryId: 6, name: '规划（学习/健身）', desc: '358/周', dayCount: 0, priceDay: 0, weekCount: 7, priceWeek: 358, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                { id: 24, categoryId: 6, name: '1V1视频监督（学习/健身）', desc: '38/小时 330/10h 560/20h', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 }
+            ],
             activities: [],
             qrCodes: { wechat: '', alipay: '' },
             adminPassword: 'admin123'
@@ -1958,6 +2004,9 @@
         // ==================== 数据库初始化 ====================
         async function initDatabase() {
             showLoading('正在连接云端...');
+            
+            // 保存初始默认数据的副本
+            const defaultAppData = JSON.parse(JSON.stringify(appData));
             
             try {
                 // 检查并创建表（通过upsert实现）
@@ -1976,11 +2025,11 @@
                     showSetupGuide();
                     return;
                 } else if (data) {
-                    // 加载云端数据
+                    // 加载云端数据，如果云端数据为空则使用默认数据
                     appData = {
-                        staff: data.staff || [],
-                        categories: data.categories || [],
-                        prices: data.prices || [],
+                        staff: (data.staff && data.staff.length > 0) ? data.staff : defaultAppData.staff,
+                        categories: (data.categories && data.categories.length > 0) ? data.categories : defaultAppData.categories,
+                        prices: (data.prices && data.prices.length > 0) ? data.prices : defaultAppData.prices,
                         activities: data.activities || [],
                         qrCodes: data.qr_codes || { wechat: '', alipay: '' },
                         adminPassword: data.admin_password || 'admin123'
@@ -1993,7 +2042,7 @@
             } catch (err) {
                 console.error('数据库连接失败:', err);
                 showToast('云端连接失败，使用本地数据');
-                loadFromLocalStorage();
+                // 不调用loadFromLocalStorage，直接使用默认数据
                 hideLoading();
                 renderAll();
             }
@@ -2008,13 +2057,49 @@
                     { id: 2, name: '陈墨言', title: '资深监督员', bio: '毕业于顶尖学府，精通各类考试技巧与备考策略，善于针对性制定学习计划，因材施教。', avatar: '' }
                 ],
                 prices: [
-                    { id: 1, categoryId: 1, name: '基础督学服务', desc: '每周三次学习跟进，含作业检查与答疑', priceDay: 15, priceMonth: 299, priceQuarter: 799, priceYear: 0 },
-                    { id: 2, categoryId: 1, name: '进阶督学服务', desc: '每日学习跟进，含一对一辅导与规划', priceDay: 25, priceMonth: 599, priceQuarter: 1599, priceYear: 0 },
-                    { id: 3, categoryId: 2, name: 'VIP私人定制', desc: '全程一对一专属督导，个性化学习方案', priceDay: 50, priceMonth: 1299, priceQuarter: 3499, priceYear: 0 }
+                    // ========== Boss监督 ==========
+                    { id: 1, categoryId: 1, name: '单人单项', desc: '项目包括：学习、减肥、生活（不良习好、三餐喝水、手机屏幕时长等选两项）', dayCount: 3, priceDay: 99, weekCount: 7, priceWeek: 198, monthCount: 30, priceMonth: 609, quarterCount: 90, priceQuarter: 1988, priceYear: 0, yearCount: 0 },
+                    { id: 2, categoryId: 1, name: '单人双项', desc: '项目包括：学习、减肥、生活（任选两项监督）', dayCount: 3, priceDay: 146, weekCount: 7, priceWeek: 288, monthCount: 30, priceMonth: 1066, quarterCount: 90, priceQuarter: 2988, priceYear: 0, yearCount: 0 },
+                    { id: 3, categoryId: 1, name: '单人主贝', desc: '项目包括：根据学员监督要求制定专属家规、优先回复、星标学员', dayCount: 3, priceDay: 188, weekCount: 7, priceWeek: 398, monthCount: 30, priceMonth: 1399, quarterCount: 90, priceQuarter: 4098, priceYear: 0, yearCount: 0 },
+                    { id: 4, categoryId: 1, name: '双人单项', desc: '双人项目也包括同单人', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 278, monthCount: 30, priceMonth: 999, quarterCount: 90, priceQuarter: 2888, priceYear: 0, yearCount: 0 },
+                    { id: 5, categoryId: 1, name: '双人双项', desc: '双人项目也包括同单人', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 428, monthCount: 30, priceMonth: 1688, quarterCount: 90, priceQuarter: 4888, priceYear: 0, yearCount: 0 },
+                    { id: 6, categoryId: 1, name: '双人主贝', desc: '双人项目也包括同单人', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 588, monthCount: 30, priceMonth: 1988, quarterCount: 90, priceQuarter: 5888, priceYear: 0, yearCount: 0 },
+                    
+                    // ========== 严厉监督 ==========
+                    { id: 7, categoryId: 2, name: '单人单项', desc: '项目包括：学习、减肥、生活（不良习好、三餐喝水、手机屏幕时长等选两项）', dayCount: 3, priceDay: 88, weekCount: 7, priceWeek: 165, monthCount: 30, priceMonth: 588, quarterCount: 90, priceQuarter: 1699, priceYear: 0, yearCount: 0 },
+                    { id: 8, categoryId: 2, name: '单人双项', desc: '项目包括：学习、减肥、生活（任选两项监督）', dayCount: 3, priceDay: 132, weekCount: 7, priceWeek: 238, monthCount: 30, priceMonth: 899, quarterCount: 90, priceQuarter: 2588, priceYear: 0, yearCount: 0 },
+                    { id: 9, categoryId: 2, name: '单人主贝', desc: '项目包括：根据学员监督要求制定专属家规、优先回复、星标学员', dayCount: 3, priceDay: 158, weekCount: 7, priceWeek: 298, monthCount: 30, priceMonth: 1088, quarterCount: 90, priceQuarter: 3088, priceYear: 0, yearCount: 0 },
+                    { id: 10, categoryId: 2, name: '双人单项', desc: '双人项目也包括同单人', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 238, monthCount: 30, priceMonth: 889, quarterCount: 90, priceQuarter: 2588, priceYear: 0, yearCount: 0 },
+                    { id: 11, categoryId: 2, name: '双人双项', desc: '双人项目也包括同单人', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 328, monthCount: 30, priceMonth: 1288, quarterCount: 90, priceQuarter: 3668, priceYear: 0, yearCount: 0 },
+                    { id: 12, categoryId: 2, name: '双人主贝', desc: '双人项目也包括同单人', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 408, monthCount: 30, priceMonth: 1588, quarterCount: 90, priceQuarter: 4588, priceYear: 0, yearCount: 0 },
+
+                    // ========== Boss与严厉双监督 ==========
+                    { id: 13, categoryId: 3, name: '双人单项', desc: 'Boss与严厉双监督服务', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 258, monthCount: 30, priceMonth: 944, quarterCount: 90, priceQuarter: 2738, priceYear: 0, yearCount: 0 },
+                    { id: 14, categoryId: 3, name: '双人双项', desc: 'Boss与严厉双监督服务', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 368, monthCount: 30, priceMonth: 1388, quarterCount: 90, priceQuarter: 3988, priceYear: 0, yearCount: 0 },
+                    { id: 15, categoryId: 3, name: '双人主贝', desc: 'Boss与严厉双监督服务', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 528, monthCount: 30, priceMonth: 1868, quarterCount: 90, priceQuarter: 5388, priceYear: 0, yearCount: 0 },
+
+                    // ========== 2v2监督模式 ==========
+                    { id: 16, categoryId: 4, name: 'Boss单项', desc: '2v2监督模式', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 530, monthCount: 30, priceMonth: 1828, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                    { id: 17, categoryId: 4, name: 'Boss双项', desc: '2v2监督模式', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 795, monthCount: 30, priceMonth: 2868, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+
+                    // ========== 夜间监督模式 ==========
+                    { id: 18, categoryId: 5, name: 'Boss单项', desc: '夜间监督服务', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 133, monthCount: 30, priceMonth: 532, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                    { id: 19, categoryId: 5, name: '严厉单项', desc: '夜间监督服务', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 119, monthCount: 30, priceMonth: 476, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+
+                    // ========== 其他监督模式 ==========
+                    { id: 20, categoryId: 6, name: '抽背（语音/文字）', desc: '30元/25分钟 60元/1小时', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                    { id: 21, categoryId: 6, name: '训诫（文字/视频）', desc: '文字：88元/30分钟 视频：128元/30分钟', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                    { id: 22, categoryId: 6, name: '树洞（文字/视频）', desc: '文字：49元/30分钟 视频：69元/30分钟', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                    { id: 23, categoryId: 6, name: '规划（学习/健身）', desc: '358/周', dayCount: 7, priceDay: 0, weekCount: 7, priceWeek: 358, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 },
+                    { id: 24, categoryId: 6, name: '1V1视频监督（学习/健身）', desc: '38/小时 330/10h 560/20h', dayCount: 0, priceDay: 0, weekCount: 0, priceWeek: 0, monthCount: 0, priceMonth: 0, quarterCount: 0, priceQuarter: 0, priceYear: 0, yearCount: 0 }
                 ],
                 categories: [
-                    { id: 1, name: '基础督学', desc: '适合日常学习监督' },
-                    { id: 2, name: 'VIP专属', desc: '高端定制服务' }
+                    { id: 1, name: 'Boss监督', desc: '高端Boss级监督服务' },
+                    { id: 2, name: '严厉监督', desc: '严格要求的监督服务' },
+                    { id: 3, name: 'Boss与严厉双监督', desc: 'Boss与严厉双重监督' },
+                    { id: 4, name: '2v2监督模式', desc: '两位监督员同时服务' },
+                    { id: 5, name: '夜间监督模式', desc: '夜间专属监督服务' },
+                    { id: 6, name: '其他监督模式', desc: '特色监督服务项目' }
                 ],
                 activities: [],
                 qr_codes: { wechat: '', alipay: '' },
