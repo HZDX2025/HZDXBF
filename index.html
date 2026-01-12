@@ -6,6 +6,24 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- 微信浏览器兼容 -->
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    
+    <!-- Open Graph 标签（微信分享显示） -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="汉责官网 · 督学服务">
+    <meta property="og:description" content="以匠心之姿，陪伴每一位求学者。专业督学监督服务平台。">
+    <meta property="og:url" content="https://hzdx2025.github.io/HZDXDR/">
+    <meta property="og:site_name" content="汉责官网">
+    
+    <!-- 微信分享描述 -->
+    <meta name="description" content="汉责官网 - 专业督学监督服务平台，以匠心之姿，陪伴每一位求学者">
+    <meta name="keywords" content="督学,监督,学习,汉责,Study Supervisor">
+    
     <title>汉责官网 · Study Supervisor</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+SC:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
@@ -1714,8 +1732,14 @@
                     <input type="text" id="serviceDesc" class="form-input" placeholder="请输入服务描述">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">价格设置（可自定义天数）</label>
+                    <label class="form-label">价格设置（可自定义时长）</label>
                     <div class="price-input-grid">
+                        <div class="price-input-item">
+                            <label><input type="checkbox" id="enableHour"> 
+                                <input type="number" id="hourCount" class="form-input-mini" value="1" min="1"> 小时
+                            </label>
+                            <input type="number" id="priceHour" class="form-input" placeholder="价格">
+                        </div>
                         <div class="price-input-item">
                             <label><input type="checkbox" id="enableDay" checked> 
                                 <input type="number" id="dayCount" class="form-input-mini" value="3" min="1"> 天
@@ -2316,10 +2340,11 @@ INSERT INTO app_config (id) VALUES (1);
         }
 
         function renderPriceCard(p) {
-            const hasPeriods = p.priceDay || p.priceWeek || p.priceMonth || p.priceQuarter || p.priceYear;
+            const hasPeriods = p.priceHour || p.priceDay || p.priceWeek || p.priceMonth || p.priceQuarter || p.priceYear;
             
             if (hasPeriods) {
                 let periodsHtml = '';
+                if (p.priceHour) periodsHtml += `<div class="price-item"><div class="price-label">${p.hourCount || 1}小时</div><div class="price-value">¥${p.priceHour}</div></div>`;
                 if (p.priceDay) periodsHtml += `<div class="price-item"><div class="price-label">${p.dayCount || 3}天</div><div class="price-value">¥${p.priceDay}</div></div>`;
                 if (p.priceWeek) periodsHtml += `<div class="price-item"><div class="price-label">${p.weekCount || 7}天</div><div class="price-value">¥${p.priceWeek}</div></div>`;
                 if (p.priceMonth) periodsHtml += `<div class="price-item"><div class="price-label">${p.monthCount || 30}天</div><div class="price-value">¥${p.priceMonth}</div></div>`;
@@ -2402,6 +2427,7 @@ INSERT INTO app_config (id) VALUES (1);
                     const cat = appData.categories.find(c => c.id === p.categoryId);
                     const catName = cat ? cat.name : '未分类';
                     let priceText = [];
+                    if (p.priceHour) priceText.push(`${p.hourCount || 1}小时¥${p.priceHour}`);
                     if (p.priceDay) priceText.push(`${p.dayCount || 3}天¥${p.priceDay}`);
                     if (p.priceWeek) priceText.push(`${p.weekCount || 7}天¥${p.priceWeek}`);
                     if (p.priceMonth) priceText.push(`${p.monthCount || 30}天¥${p.priceMonth}`);
@@ -2625,18 +2651,21 @@ INSERT INTO app_config (id) VALUES (1);
             const name = document.getElementById('serviceName').value.trim();
             const desc = document.getElementById('serviceDesc').value.trim();
             
+            const enableHour = document.getElementById('enableHour').checked;
             const enableDay = document.getElementById('enableDay').checked;
             const enableWeek = document.getElementById('enableWeek').checked;
             const enableMonth = document.getElementById('enableMonth').checked;
             const enableQuarter = document.getElementById('enableQuarter').checked;
             const enableYear = document.getElementById('enableYear').checked;
             
+            const hourCount = parseInt(document.getElementById('hourCount').value) || 1;
             const dayCount = parseInt(document.getElementById('dayCount').value) || 3;
             const weekCount = parseInt(document.getElementById('weekCount').value) || 7;
             const monthCount = parseInt(document.getElementById('monthCount').value) || 30;
             const quarterCount = parseInt(document.getElementById('quarterCount').value) || 90;
             const yearCount = parseInt(document.getElementById('yearCount').value) || 365;
             
+            const priceHour = enableHour ? parseInt(document.getElementById('priceHour').value) || 0 : 0;
             const priceDay = enableDay ? parseInt(document.getElementById('priceDay').value) || 0 : 0;
             const priceWeek = enableWeek ? parseInt(document.getElementById('priceWeek').value) || 0 : 0;
             const priceMonth = enableMonth ? parseInt(document.getElementById('priceMonth').value) || 0 : 0;
@@ -2648,7 +2677,7 @@ INSERT INTO app_config (id) VALUES (1);
                 return;
             }
             
-            if (!priceDay && !priceWeek && !priceMonth && !priceQuarter && !priceYear) {
+            if (!priceHour && !priceDay && !priceWeek && !priceMonth && !priceQuarter && !priceYear) {
                 showToast('请至少设置一个价格');
                 return;
             }
@@ -2659,11 +2688,13 @@ INSERT INTO app_config (id) VALUES (1);
                 categoryId,
                 name, 
                 desc, 
+                priceHour,
                 priceDay,
                 priceWeek,
                 priceMonth,
                 priceQuarter,
                 priceYear,
+                hourCount: enableHour ? hourCount : 0,
                 dayCount: enableDay ? dayCount : 0,
                 weekCount: enableWeek ? weekCount : 0,
                 monthCount: enableMonth ? monthCount : 0,
@@ -2678,6 +2709,7 @@ INSERT INTO app_config (id) VALUES (1);
             // 清空表单
             document.getElementById('serviceName').value = '';
             document.getElementById('serviceDesc').value = '';
+            document.getElementById('priceHour').value = '';
             document.getElementById('priceDay').value = '';
             document.getElementById('priceWeek').value = '';
             document.getElementById('priceMonth').value = '';
